@@ -1,0 +1,48 @@
+{
+  "name": "mtms-gui",
+  "version": "0.0.1",
+  "description": "GUI for backend - getting data from remote piezometers, creation of charts and storage archive data",
+  "productName": "MT Measuring System",
+  "author": "Troll-Systems",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue ./",
+    "format": "prettier --write \"**/*.{js,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.0.0",
+    "axios": "^0.21.1",
+    "core-js": "^3.6.5",
+    "quasar": "2",
+    "vue": "3",
+    "vue-router": "4"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.13.14",
+    "@quasar/app-webpack": "3",
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-vue": "^8.5.0",
+    "eslint-webpack-plugin": "^3.1.1",
+    "prettier": "^2.5.1",
+    "stylus": "^0.57.0",
+    "stylus-loader": "^6.2.0"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": ">= 12.22.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}
