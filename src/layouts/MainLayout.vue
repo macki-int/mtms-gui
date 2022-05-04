@@ -68,7 +68,7 @@ const linksList = [
     title: "Logout",
     caption: "wyloguj",
     icon: "lock_person",
-    link: "",
+    to: "/",
   },
 ];
 
