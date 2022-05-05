@@ -3,10 +3,12 @@
     <div class="q-pa-md">
       <q-table
         title="Zestawienie odczytów"
+        :rows="readouts"
         dense
-        :rows="rows"
+        flat
         :columns="columns"
         row-key="name"
+        :pagination="pagination"
       />
     </div>
   </q-page>
@@ -19,23 +21,33 @@ export default {
   },
   data() {
     return {
-      readouts: "",
+      readouts: [],
+
+      pagination: {
+        sortBy: "type",
+        descending: false,
+        rowsPerPage: 25,
+      },
 
       columns: [
         {
           name: "readoutDataTime",
           label: "Data odczytu",
           field: "readoutDataTime",
+          align: "left",
+          sortable: true,
         },
         {
           name: "pD",
           label: "Poziom wody",
           field: "pD",
+          align: "right",
         },
         {
           name: "tOb1",
           label: "Temperatura",
           field: "tOb1",
+          align: "right",
         },
       ],
     };
@@ -49,14 +61,15 @@ export default {
           dataType: "json",
           headers: {
             "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods":
-              "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-            "Access-Control-Allow-Headers":
-              "Origin, Content-Type, X-Auth-Token",
+            // "Access-Control-Allow-Methods":
+            //   "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            // "Access-Control-Allow-Headers":
+            //   "Origin, Content-Type, X-Auth-Token",
           },
         })
         .then((response) => {
           this.readouts = response.data;
+          console.log(this.readouts);
         })
         .catch((error) => {
           console.log(error.response);
@@ -69,7 +82,6 @@ export default {
             });
           }
         });
-      // console.log(this.$api);
     },
   },
 };
