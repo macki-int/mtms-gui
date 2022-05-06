@@ -9,6 +9,7 @@
         :columns="columns"
         row-key="name"
         :pagination="pagination"
+        @row-click="showMessage"
       />
     </div>
   </q-page>
@@ -26,7 +27,7 @@ export default {
       pagination: {
         sortBy: "type",
         descending: false,
-        rowsPerPage: 25,
+        rowsPerPage: 24,
       },
 
       columns: [
@@ -39,14 +40,44 @@ export default {
         },
         {
           name: "pD",
-          label: "Poziom wody",
-          field: "pD",
+          label: "Poziom wody (Pd)",
+          field: (row) => (row.pD * 10 - 2.4).toFixed(2) + " m",
+          align: "right",
+        },
+        {
+          name: "p1",
+          label: "Ciśnienie atmosferyczne (P1)",
+          field: (row) => row.p1.toFixed(7),
           align: "right",
         },
         {
           name: "tOb1",
-          label: "Temperatura",
-          field: "tOb1",
+          label: "Temperatura powietrza (TOB1)",
+          field: (row) => row.tOb1.toFixed(2),
+          align: "right",
+        },
+        {
+          name: "pBaro",
+          label: "Ciśnienie wody (P Baro)",
+          field: (row) => row.pBaro.toFixed(7),
+          align: "right",
+        },
+        {
+          name: "tBaro",
+          label: "Temperatura wody (T Baro)",
+          field: (row) => row.tBaro.toFixed(2),
+          align: "right",
+        },
+        {
+          name: "description",
+          label: "Komentarz",
+          field: "description",
+          align: "left",
+        },
+        {
+          name: "serialNumber",
+          label: "SN modułu",
+          field: (row) => row.transmitterParameterReading.serialNumber,
           align: "right",
         },
       ],
@@ -69,7 +100,7 @@ export default {
         })
         .then((response) => {
           this.readouts = response.data;
-          console.log(this.readouts);
+          // console.log(this.readouts);
         })
         .catch((error) => {
           console.log(error.response);
@@ -82,6 +113,10 @@ export default {
             });
           }
         });
+    },
+
+    showMessage: function (evt, row) {
+      alert("Poziom wody: " + (row.pD * 10 - 2.4) + " m ppt");
     },
   },
 };
