@@ -13,6 +13,11 @@ const routes = [
         name: "ReadoutsAll",
         component: () => import("pages/ReadoutsAll.vue"),
       },
+      {
+        path: "/ApexAreaChart",
+        name: "ApexAreaChart",
+        component: () => import("pages/ApexAreaChart.vue"),
+      },
     ],
   },
 

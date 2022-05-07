@@ -17,8 +17,8 @@
 
 <script>
 export default {
-  mounted() {
-    this.getReadouts();
+  async mounted() {
+    await this.getReadouts();
   },
   data() {
     return {
